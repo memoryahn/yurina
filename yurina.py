@@ -12,8 +12,11 @@ import random
 from multiprocessing import Pool,Manager
 from matplotlib import pyplot as plt
 from matplotlib import font_manager, rc
-font_name = font_manager.FontProperties(fname="c:/Windows/Fonts/malgun.ttf").get_name()
-rc('font', family=font_name)
+# font_name = font_manager.FontProperties(fname="c:/Windows/Fonts/malgun.ttf").get_name()
+# rc('font', family=font_name)
+font_name = font_manager.FontProperties(fname="/usr/share/fonts/truetype/nan    um/NanumGothic.ttf").get_name()
+ 16 rc('font', family=font_name)
+
 
 def mlbparkCrawl(pageNumber):
     doct=[]
