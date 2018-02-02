@@ -49,6 +49,7 @@ def mlbparkCrawl(pageNumber):
                 doct.append(ar_txt.get_text())
         except:
             print('error'+str(pageNumber)+'저장에러')
+    print(str(pageNumber)+"완료")        
     return doct 
 
 def get_tags(text, ntags=50):
@@ -108,8 +109,9 @@ def main(ch):
             y.append(count)
             msg.append(noun+' '+str(count))
             open_output_file.write('{} {}\n'.format(noun, count))        
-        open_output_file.close()                  
-        plt.bar(y,x)
+        open_output_file.close() 
+        print(msg)                 
+        plt.bar(x,y,label='test')
         # plt.show
         plt.savefig('test.png')
         with open('test.png', 'rb') as f:
@@ -117,8 +119,7 @@ def main(ch):
             "files.upload",
             channels=ch,
             filename='sample.mp4',
-            title='검색결과',
-            initial_comment='검색',
+            title='검색결과',            
             file=f,
             as_user='true'
             )
@@ -227,4 +228,4 @@ if __name__ == '__main__':
             else:
                 print("Connection Failed")   
         except :
-            sendmsg('test','사망')   
+            sendmsg('general','사망')   
