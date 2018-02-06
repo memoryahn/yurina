@@ -191,6 +191,22 @@ def sendmsg(ch,msg):
         channel=ch,
         text=rand,
         as_user='true'
+        )
+    elif msg == '기역':
+        rand = ("니가말한 기역이 과연 기역일까","기억하세요!","기역 니은")
+        slack.api_call(
+        "chat.postMessage",
+        channel=ch,
+        text=rand,
+        as_user='true'
+        )
+    elif msg == '흠':
+        rand = ("흠같은 소리하고있네","뭐가 잘 안되요?")
+        slack.api_call(
+        "chat.postMessage",
+        channel=ch,
+        text=rand,
+        as_user='true'
         )    
 if __name__ == '__main__':        
     token = os.environ['slacktoken']#custom
@@ -225,6 +241,10 @@ if __name__ == '__main__':
                                         sendmsg(i.get('channel'),'유리나')
                                 elif ('ㅋ' in iText or 'ㅎ' in iText )and i.get('user') != bot_id:
                                     sendmsg(i.get('channel'),'ㅋㅋ')                      
+                                elif '기역' in itext:
+                                    sendmsg(i.get('channel'),'기역')
+                                elif iText == '흠':
+                                    sendmsg(i.get('channel'),'흠')
                     del msg[:]                       
                     # del doc[:]
                     time.sleep(2)             
