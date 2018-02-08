@@ -193,7 +193,7 @@ def sendmsg(ch,msg):
         as_user='true'
         )
     elif msg == '기역':
-        rand = ("니가말한 기역이 과연 기역일까","기억하세요!","기역 니은")
+        rand = ("니가말한 기역이 과연 기역일까","기억하세요","기역 니은","기역 기역 기억 기억")
         slack.api_call(
         "chat.postMessage",
         channel=ch,
@@ -201,7 +201,7 @@ def sendmsg(ch,msg):
         as_user='true'
         )
     elif msg == '흠':
-        rand = ("흠같은 소리하고있네","뭐가 잘 안되요?")
+        rand = ("흠같은 소리하고있네","뭐가 잘안되나요?")
         slack.api_call(
         "chat.postMessage",
         channel=ch,
