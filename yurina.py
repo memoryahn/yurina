@@ -14,8 +14,8 @@ from matplotlib import pyplot as plt
 from matplotlib import font_manager, rc
 # font_name = font_manager.FontProperties(fname="c:/Windows/Fonts/malgun.ttf").get_name()
 # rc('font', family=font_name)
-font_name = font_manager.FontProperties(fname="/usr/share/fonts/truetype/nan    um/NanumGothic.ttf").get_name()
- 16 rc('font', family=font_name)
+# font_name = font_manager.FontProperties(fname="/usr/share/fonts/truetype/nan    um/NanumGothic.ttf").get_name()
+#  16 rc('font', family=font_name)
 
 
 def mlbparkCrawl(pageNumber):
@@ -146,7 +146,7 @@ def slacksend(ch):
     return
 def sendmsg(ch,msg):
     if msg == '엠팍':
-        rand=['MLBPARK 이슈를 알려드릴게요','현재 엠팍의 이슈는요 잠시만요','맨날 이거만시키네']        
+        rand=['MlBPARK 이슈를 알려드릴게요','현재 엠팍의 이슈는요 잡시만요','맨날 이거만 시키네']
         slack.api_call(
         "chat.postMessage",
         channel=ch,
@@ -193,7 +193,7 @@ def sendmsg(ch,msg):
         as_user='true'
         )
     elif msg == '기역':
-        rand = ("니가말한 기역이 과연 기역일까","기억하세요","기역 니은","기역 기역 기억 기억")
+        rand = ('니가말한 기역이 과연 기역일까','기억하세요','기역 니은','기역 기역 기억 기억')
         slack.api_call(
         "chat.postMessage",
         channel=ch,
@@ -201,7 +201,7 @@ def sendmsg(ch,msg):
         as_user='true'
         )
     elif msg == '흠':
-        rand = ("흠같은 소리하고있네","뭐가 잘안되나요?")
+        rand = ('흠같은 소리하고있네','뭐가 잘안되나요?')
         slack.api_call(
         "chat.postMessage",
         channel=ch,
@@ -241,7 +241,7 @@ if __name__ == '__main__':
                                         sendmsg(i.get('channel'),'유리나')
                                 elif ('ㅋ' in iText or 'ㅎ' in iText )and i.get('user') != bot_id:
                                     sendmsg(i.get('channel'),'ㅋㅋ')                      
-                                elif '기역' in itext:
+                                elif '기역' in iText:
                                     sendmsg(i.get('channel'),'기역')
                                 elif iText == '흠':
                                     sendmsg(i.get('channel'),'흠')
