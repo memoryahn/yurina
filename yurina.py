@@ -12,11 +12,28 @@ import random
 from multiprocessing import Pool,Manager
 from matplotlib import pyplot as plt
 from matplotlib import font_manager, rc
+import json
 # font_name = font_manager.FontProperties(fname="c:/Windows/Fonts/malgun.ttf").get_name()
 # rc('font', family=font_name)
 # font_name = font_manager.FontProperties(fname="/usr/share/fonts/truetype/nan    um/NanumGothic.ttf").get_name()
 #  16 rc('font', family=font_name)
 
+def gifsend(ch):    
+    url='http://127.0.0.1:5000/api/gif/slack/5'
+    headersObject = { 'User-Agent': '', 'Accept': '*/*' }
+    with urllib.request.urlopen(urllib.request.Request(url, headers = headersObject)) as coinUrl:
+        coinData = coinUrl.read()
+        encoding = coinUrl.info().get_content_charset('utf-8')    
+    for i in json.loads(coinData.decode(encoding)):
+        title=i['title']
+        count=i['count']
+        result=str(count)+' : '+str(title)+'\n'
+    slack.api_call(
+    "chat.postMessage",
+    channel=ch,
+    text=result,
+    as_user='true'
+    )
 
 def mlbparkCrawl(pageNumber):
     doct=[]
@@ -201,13 +218,14 @@ def sendmsg(ch,msg):
         as_user='true'
         )
     elif msg == '흠':
-        rand = ('ㅎㅎㅎaaㅎㅎㅎㅎㅎ')
+        rand = ('흠 같은 소리 하고있네','뭐 잘 안되나요?')
         slack.api_call(
         "chat.postMessage",
         channel=ch,
         text=rand,
         as_user='true'
-        )    
+        )
+
 if __name__ == '__main__':        
     token = os.environ['slacktoken']#custom
     slack = SlackClient(token)
@@ -245,6 +263,8 @@ if __name__ == '__main__':
                                     sendmsg(i.get('channel'),'기역')
                                 elif iText == '흠':
                                     sendmsg(i.get('channel'),'흠')
+                                elif '최근gif' in iText and i.get('user'):
+                                    gifsend(i.get('channel'))
                     del msg[:]                       
                     # del doc[:]
                     time.sleep(2)             
