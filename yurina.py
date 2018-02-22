@@ -206,7 +206,7 @@ def sendmsg(ch,msg):
         slack.api_call(
         "chat.postMessage",
         channel=ch,
-        text=rand,
+        text=random.choice(rand),
         as_user='true'
         )
     elif msg == '기역':
@@ -214,7 +214,7 @@ def sendmsg(ch,msg):
         slack.api_call(
         "chat.postMessage",
         channel=ch,
-        text=rand,
+        text=random.choice(rand),
         as_user='true'
         )
     elif msg == '흠':
@@ -222,7 +222,7 @@ def sendmsg(ch,msg):
         slack.api_call(
         "chat.postMessage",
         channel=ch,
-        text=rand,
+        text=random.choice(rand),
         as_user='true'
         )
 
