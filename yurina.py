@@ -24,10 +24,11 @@ def gifsend(ch):
     with urllib.request.urlopen(urllib.request.Request(url, headers = headersObject)) as coinUrl:
         coinData = coinUrl.read()
         encoding = coinUrl.info().get_content_charset('utf-8')    
+    result=''
     for i in json.loads(coinData.decode(encoding)):
         title=i['title']
         count=i['count']
-        result=str(count)+' : '+str(title)+'\n'
+        result=result+str(count)+' : '+str(title)+'\n'
     slack.api_call(
     "chat.postMessage",
     channel=ch,
@@ -202,7 +203,7 @@ def sendmsg(ch,msg):
         as_user='true'
         )
     elif msg == '명령어':
-        rand = ("유리나의 명령어: '엠팍','ㅋ','ㅎ','유리나','명령어'")
+        rand = ("유리나의 명령어: '엠팍','ㅋ','ㅎ','유리나','명령어','흠','최근gif'")
         slack.api_call(
         "chat.postMessage",
         channel=ch,
@@ -267,7 +268,7 @@ if __name__ == '__main__':
                                     gifsend(i.get('channel'))
                     del msg[:]                       
                     # del doc[:]
-                    time.sleep(2)             
+                    time.sleep(1)             
             else:
                 print("Connection Failed")   
         except :
